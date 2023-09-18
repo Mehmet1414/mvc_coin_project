@@ -23,7 +23,7 @@ const LoginPage = () => {
         </label>
         <input
           className={`${
-            formik.errors.email && "text-amber-600"
+            formik.errors.email && "text-amber-600 border-2 border-amber-600"
           } p-2 rounded-md outline-none text-[#242424] focus:outline-none `}
           type="email"
           name="email"
@@ -37,7 +37,7 @@ const LoginPage = () => {
         </label>
         <input
           className={`${
-            formik.errors.age && "text-amber-600"
+            formik.errors.age && "text-amber-600 border-2 border-amber-600"
           } p-2 rounded-md outline-none text-[#242424] focus:outline-none `}
           type="number"
           name="age"
@@ -50,8 +50,8 @@ const LoginPage = () => {
         </label>
         <input
           className={`${
-            formik.errors.password && "text-amber-600"
-          } p-2 rounded-md outline-none text-[#242424] focus:outline-none `}
+            formik.errors.password && "text-amber-600 border-2 border-amber-600"
+          } p-2 rounded-md outline-none text-[#242424]  focus:outline-none `}
           type="password"
           name="password"
           value={formik.values.password}
@@ -63,8 +63,9 @@ const LoginPage = () => {
         </label>
         <input
           className={`${
-            formik.errors.confirmPassword && "text-amber-600"
-          } p-2 rounded-md outline-none text-[#242424] focus:outline-none `}
+            formik.errors.confirmPassword &&
+            "text-amber-600 border-2 border-amber-600"
+          } p-2 rounded-md outline-none text-[#242424]  focus:outline-none `}
           type="password"
           name="confirmPassword"
           value={formik.values.confirmPassword}
