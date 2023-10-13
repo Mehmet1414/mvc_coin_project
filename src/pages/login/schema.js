@@ -1,7 +1,6 @@
 import * as yup from "yup";
 
-const passwwordRules =
-  /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,}$/;
+const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}$/; // regex hazir form
 
 export const schema = yup.object().shape({
   // methotlarda '' icinde uyari yazilabilir
@@ -13,5 +12,14 @@ export const schema = yup.object().shape({
     // number ve string girmeyince hata veriyor
     .max(100, "The age range should be 18 to 100")
     .required(),
-  passwword: yup.string().min(5, "Password must be longer than 5 characters"),
+  password: yup
+    .string()
+    .required()
+    .matches(passwordRules, "Please choose a stronger password")
+    .min(5, "Password must be longer than 5 characters"),
+  confirmPassword: yup
+    .string()
+    .required()
+    .oneOf([yup.ref("password")], "password does not match"),
+  checkbox: yup.boolean().oneOf([true]),
 });
