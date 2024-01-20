@@ -4,5 +4,13 @@ export default {
   theme: {
     extend: {},
   },
+  variants: {
+    extend: {
+      tableLayout: ["hover", "focus"],
+    },
+    container: {
+      center: true,
+    },
+  },
   plugins: [],
 };

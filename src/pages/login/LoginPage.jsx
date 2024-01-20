@@ -1,8 +1,20 @@
 import { useFormik } from "formik";
+import { useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header";
+import UserContex from "../../context/userContex";
 import { schema } from "./schema";
 
 const LoginPage = () => {
+  const navigate = useNavigate();
+  const { user, signUser } = useContext(UserContex);
+
+  useEffect(() => {
+    if (user) {
+      navigate("/coins");
+    }
+  }, [user]); // user'a bagli olmazsa hata verir(user bilgisi gelmedden navigaate  calisir)
+
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -13,9 +25,15 @@ const LoginPage = () => {
     },
     validationSchema: schema,
 
-    onSubmit: (values) => console.log(values),
+    onSubmit: (values, actions) => {
+      console.log(values, actions);
+      signUser(values);
+      actions.resetForm();
+
+      navigate("/coins");
+    },
   });
-  console.log(formik.errors);
+  //console.log(formik.errors);
 
   return (
     <>
@@ -109,6 +127,7 @@ const LoginPage = () => {
         <button
           type="submit"
           className=" p-2 mt-8 mb-4 rounded-md bg-zinc-900 font-bold hover:text-amber-600 hover:bg-zinc-900/50 transition uppercase "
+          disabled={formik.isSubmitting} // gönderi esnasinda button disabled olur
         >
           Send
         </button>
