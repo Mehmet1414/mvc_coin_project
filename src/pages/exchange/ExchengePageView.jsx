@@ -17,16 +17,19 @@ const ExchengePageView = ({ exchangeData }) => {
        nachdem Daten geladen */}
       <div className="w-full flex justify-center mt-[-80px]">
         <table className=" w-3/4 table bg-zinc-100 text-slate-900 mt-22">
-          <thead className=" table-header-group text-right">
+          <thead className=" table-header-group text-right ">
             <tr className=" table-row text-sm border-b-2 bg-red-50">
               <th className=" table-cell py-3 font-light pl-3 ">Rank</th>
               <th className=" table-cell py-3 font-light pl-8 text-left ">
-                Coin
+                Name
               </th>
-              <th className=" table-cell py-3 font-light pl-3">Price</th>
-              <th className=" table-cell py-3 font-light pl-3">MarketCap</th>
+              <th className=" table-cell py-3 font-light pl-3">
+                Trading Pairs
+              </th>
+              <th className=" table-cell py-3 font-light pl-3">Top Pair</th>
               <th className=" table-cell py-3 font-light pl-3">Volume(24Hr)</th>
-              <th className=" table-cell py-3 font-light p-3">Change(24Hr)</th>
+              <th className=" table-cell py-3 font-light p-3">Total(%)</th>
+              <th className=" table-cell py-3 font-light p-3">Status</th>
             </tr>
           </thead>
           <tbody className=" table-row-group text-right ">
@@ -41,24 +44,30 @@ const ExchengePageView = ({ exchangeData }) => {
                 <td className="  flex flex-col text-left pl-8">
                   <span>{item.name}</span>
                   <span className=" text-amber-500 text-xs font-bold">
-                    {item.symbol}
+                    {item.exchangeId}
                   </span>
                 </td>
-                <td className=" table-cell py-4  ">{millify(item.priceUsd)}</td>
+                <td className=" table-cell py-4  ">{item.tradingPairs}</td>
                 <td className=" table-cell py-4  ">
-                  {millify(item.marketCapUsd)}
+                  {!item.volumeUsd ? "-" : millify(item.volumeUsd)}
                 </td>
                 <td className=" table-cell py-4 ">
-                  {millify(item.volumeUsd24Hr)}
+                  {!item.volumeUsd ? "-" : millify(item.volumeUsd)}
                 </td>
-                <td className=" table-cell py-4 pr-3 ">
-                  {item.changePercent24Hr < 0 ? (
-                    <span className=" text-red-500">
-                      {millify(item.changePercent24Hr)}%
+                <td className=" table-cell py-4 ">
+                  %{" "}
+                  {!item.percentTotalVolume
+                    ? "-"
+                    : millify(item.percentTotalVolume)}
+                </td>
+                <td className=" table-cell py-4 pr-6 text-right ">
+                  {item.socket === true ? (
+                    <span className=" flex justify-end items-center">
+                      <div className=" bg-green-500 h-5 w-5 rounded-full"></div>
                     </span>
                   ) : (
-                    <span className=" text-green-600">
-                      {millify(item.changePercent24Hr)}%
+                    <span className=" flex justify-end items-center">
+                      <div className=" bg-red-600 h-5 w-5 rounded-full"></div>
                     </span>
                   )}
                 </td>

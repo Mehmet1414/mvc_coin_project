@@ -21,7 +21,7 @@ const MainPageView = ({ coins }) => {
             <tr className=" table-row text-sm border-b-2 bg-red-50">
               <th className=" table-cell py-3 font-light pl-3 ">Rank</th>
               <th className=" table-cell py-3 font-light pl-8 text-left ">
-                Coin
+                Name
               </th>
               <th className=" table-cell py-3 font-light pl-3">Price</th>
               <th className=" table-cell py-3 font-light pl-3">MarketCap</th>

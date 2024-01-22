@@ -11,7 +11,7 @@ export const ExchangeProvider = ({ children }) => {
       .then((res) => setExchangeData(res.data.data));
   };
   return (
-    <ExchangeContext.Provider value={{ getExchange, exchangeData }}>
+    <ExchangeContext.Provider value={{ exchangeData, getExchange }}>
       {children}
     </ExchangeContext.Provider>
   );

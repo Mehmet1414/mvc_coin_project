@@ -14,13 +14,13 @@ export const UserProvider = ({ children }) => {
     newUser.id = v4();
     // id`yi localStorige göndder
     localStorage.setItem("token", newUser.id);
-    // id'yi usser a atama yap
+    // id'yi user a atama yap
     setUser(newUser.id);
   };
   //console.log(user);
 
   return (
-    <UserContex.Provider value={{ user, signUser }}>
+    <UserContex.Provider value={{ user, signUser, setUser }}>
       {children}
     </UserContex.Provider>
   );
