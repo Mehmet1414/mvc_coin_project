@@ -4,7 +4,6 @@ import MainPageView from "./MainPageView";
 
 const MainPageControler = () => {
   const { coins, getCoins } = useContext(CoinContext);
-
   useEffect(() => {
     getCoins();
   }, []);

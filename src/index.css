@@ -5,4 +5,6 @@
 body {
   background: #242424;
   color: #ffff;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }

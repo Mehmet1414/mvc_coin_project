@@ -4,13 +4,16 @@ import App from "./App.jsx";
 import { CoinProvider } from "./context/coinContex.jsx";
 import { UserProvider } from "./context/userContex.jsx";
 import "./index.css";
+import { ExchangeProvider } from "./context/exchangeContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <CoinProvider>
-      <UserProvider>
-        <App />
-      </UserProvider>
-    </CoinProvider>
+    <ExchangeProvider>
+      <CoinProvider>
+        <UserProvider>
+          <App />
+        </UserProvider>
+      </CoinProvider>
+    </ExchangeProvider>
   </React.StrictMode>
 );
