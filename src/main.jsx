@@ -8,12 +8,12 @@ import { ExchangeProvider } from "./context/exchangeContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <ExchangeProvider>
+    <UserProvider>
       <CoinProvider>
-        <UserProvider>
+        <ExchangeProvider>
           <App />
-        </UserProvider>
+        </ExchangeProvider>
       </CoinProvider>
-    </ExchangeProvider>
+    </UserProvider>
   </React.StrictMode>
 );

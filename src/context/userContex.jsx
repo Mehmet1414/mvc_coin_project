@@ -17,10 +17,14 @@ export const UserProvider = ({ children }) => {
     // id'yi user a atama yap
     setUser(newUser.id);
   };
+  const logoutUser = () => {
+    localStorage.removeItem("token");
+    setUser(null);
+  };
   //console.log(user);
 
   return (
-    <UserContex.Provider value={{ user, signUser, setUser }}>
+    <UserContex.Provider value={{ user, signUser, setUser, logoutUser }}>
       {children}
     </UserContex.Provider>
   );

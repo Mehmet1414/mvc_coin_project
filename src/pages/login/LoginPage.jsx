@@ -13,7 +13,7 @@ const LoginPage = () => {
     if (user) {
       navigate("/coins");
     }
-  }, [user]); // user'a bagli olmazsa hata verir(user bilgisi gelmedden navigaate  calisir)
+  }, [user]); // user'a bagli olmazsa hata verir(user bilgisi gelmedden navigate  calisir)
 
   const formik = useFormik({
     initialValues: {
@@ -39,7 +39,7 @@ const LoginPage = () => {
     <>
       <Header />
       <form
-        className=" flex flex-col  px-36 mt-[25%]"
+        className="w-3/5 max-md:w-1/2 flex flex-col m-auto"
         onSubmit={formik.handleSubmit}
       >
         <label className=" py-5 pb-2" htmlFor="email">

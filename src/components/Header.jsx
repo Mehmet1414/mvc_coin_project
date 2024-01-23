@@ -1,6 +1,10 @@
-import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import UserContex from "../context/userContex";
 
-const Header = ({ setUser }) => {
+const Header = () => {
+  const { user, logoutUser } = useContext(UserContex);
+
   const navigate = useNavigate();
   const handleCoinsClick = () => {
     navigate("/coins");
@@ -8,36 +12,36 @@ const Header = ({ setUser }) => {
   const handleExcClick = () => {
     navigate("/exchanges");
   };
-  const handleLockoutClick = () => {
-    localStorage.removeItem("tocken");
-    setUser(null);
-    navigate("/");
-  };
+
   return (
     <div className=" border-b-2 border-b-amber-400/30 flex justify-between px-20 py-7 mb-6 ">
       <span className=" flex gap-5">
-        <span
+        <Link
           className=" cursor-pointer hover:text-amber-500 hover:border-b transition-all focus:text-amber-500/50"
           onClick={handleCoinsClick}
         >
           Coins
-        </span>
-        <span
+        </Link>
+        <Link
           className=" cursor-pointer hover:text-amber-500 hover:border-b transition-all focus:text-amber-500/50"
           onClick={handleExcClick}
         >
           Exchanges
-        </span>
+        </Link>
       </span>
       <span className=" font-bold text-4xl">
         Coin<span className=" text-amber-500">Cap</span>
       </span>
-      <span
-        className=" cursor-pointer hover:text-amber-500 hover:border-b transition-all focus:text-amber-500/50"
-        onClick={handleLockoutClick}
+      <Link
+        className={`${
+          !user
+            ? "invisible"
+            : "cursor-pointer hover:text-amber-500 hover:border-b transition-all focus:text-amber-500/50"
+        }`}
+        onClick={logoutUser}
       >
         Logout
-      </span>
+      </Link>
     </div>
   );
 };
