@@ -24,9 +24,15 @@ const MainPageView = ({ coins }) => {
                 Name
               </th>
               <th className=" table-cell py-3 font-light pl-3">Price</th>
-              <th className=" table-cell py-3 font-light pl-3">MarketCap</th>
-              <th className=" table-cell py-3 font-light pl-3">Volume(24Hr)</th>
-              <th className=" table-cell py-3 font-light p-3">Change(24Hr)</th>
+              <th className=" table-cell py-3 font-light pl-3 invisible md:visible">
+                MarketCap
+              </th>
+              <th className=" table-cell py-3 font-light pl-3 invisible md:visible">
+                Volume(24Hr)
+              </th>
+              <th className=" table-cell py-3 font-light p-3 pr-4">
+                Change(24Hr)
+              </th>
             </tr>
           </thead>
           <tbody className=" table-row-group text-right ">
@@ -45,13 +51,13 @@ const MainPageView = ({ coins }) => {
                   </span>
                 </td>
                 <td className=" table-cell py-4  ">{millify(coin.priceUsd)}</td>
-                <td className=" table-cell py-4  ">
+                <td className=" table-cell py-4 invisible md:visible  ">
                   {millify(coin.marketCapUsd)}
                 </td>
-                <td className=" table-cell py-4 ">
+                <td className=" table-cell py-4 invisible md:visible ">
                   {millify(coin.volumeUsd24Hr)}
                 </td>
-                <td className=" table-cell py-4 pr-3 ">
+                <td className=" table-cell py-4 pr-4 ">
                   {coin.changePercent24Hr < 0 ? (
                     <span className=" text-red-500">
                       {millify(coin.changePercent24Hr)}%

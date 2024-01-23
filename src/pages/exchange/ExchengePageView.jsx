@@ -26,8 +26,12 @@ const ExchengePageView = ({ exchangeData }) => {
               <th className=" table-cell py-3 font-light pl-3">
                 Trading Pairs
               </th>
-              <th className=" table-cell py-3 font-light pl-3">Top Pair</th>
-              <th className=" table-cell py-3 font-light pl-3">Volume(24Hr)</th>
+              <th className=" table-cell py-3 font-light pl-3 invisible md:visible">
+                Top Pair
+              </th>
+              <th className=" table-cell py-3 font-light pl-3 invisible md:visible">
+                Volume(24Hr)
+              </th>
               <th className=" table-cell py-3 font-light p-3">Total(%)</th>
               <th className=" table-cell py-3 font-light p-3">Status</th>
             </tr>
@@ -48,10 +52,10 @@ const ExchengePageView = ({ exchangeData }) => {
                   </span>
                 </td>
                 <td className=" table-cell py-4  ">{item.tradingPairs}</td>
-                <td className=" table-cell py-4  ">
+                <td className=" table-cell py-4 invisible md:visible  ">
                   {!item.volumeUsd ? "-" : millify(item.volumeUsd)}
                 </td>
-                <td className=" table-cell py-4 ">
+                <td className=" table-cell py-4 invisible md:visible ">
                   {!item.volumeUsd ? "-" : millify(item.volumeUsd)}
                 </td>
                 <td className=" table-cell py-4 ">
